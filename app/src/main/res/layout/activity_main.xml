@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_partly_cloudy"
+    android:fillViewport="true"
+    tools:context=".Activities.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/searchCity"
+            android:inputType="text"
+            android:textColor="@color/colorTextAndIcons"
+            android:textSize="50dp"
+            app:layout_constraintEnd_toStartOf="@+id/searchButtonLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/searchButtonLayout"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/search_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/locationButtonLayout"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/location_marker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchButtonLayout">
+
+
+            <Button
+                android:id="@+id/locationButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/currentCityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textSize="60sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cityNameGuideline"
+            android:text="@string/city" />
+
+
+        <TextView
+            android:id="@+id/currentCountryTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:textSize="40sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentCityTV"
+            android:text="@string/country" />
+
+
+        <TextView
+            android:id="@+id/currentTempTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextAndIcons"
+            android:textSize="120sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tempGuideline"
+            android:text="@string/degree" />
+
+
+        <!-- Loading indicator is only shown before the first load -->
+
+
+        <!-- Empty view is only visible when the list has no items. -->
+
+
+        <ImageView
+            android:id="@+id/currentConditionIV"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="weather_condition_icon"
+            app:layout_constraintEnd_toStartOf="@+id/currentConditionTV"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/conditionGuideline" />
+
+
+        <TextView
+            android:id="@+id/currentConditionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="0dp"
+            android:textSize="60sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/currentConditionIV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/currentConditionIV"
+            app:layout_constraintTop_toTopOf="@+id/currentConditionIV"
+             />
+
+
+
+        <TextView
+            android:id="@+id/currentHumidityTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:textSize="30sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toStartOf="@+id/currentPressureTV"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/firstRowDetailsGuideline"
+            android:text="@string/humidity" />
+
+
+        <TextView
+            android:id="@+id/currentWindTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toStartOf="@+id/currentVisibilityTV"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/secondRowDetailsGuideline"
+            android:text="@string/wind" />
+
+
+        <TextView
+            android:id="@+id/currentPressureTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:textSize="30sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/currentHumidityTV"
+            app:layout_constraintTop_toTopOf="@+id/firstRowDetailsGuideline"
+            android:text="@string/pressure" />
+
+
+        <TextView
+            android:id="@+id/currentVisibilityTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/currentWindTV"
+            app:layout_constraintTop_toTopOf="@+id/secondRowDetailsGuideline"
+            android:text="@string/visibility" />
+
+
+
+                    <!-- FORECAST FOR UPCOMING DAYS  -->
+        <TextView
+            android:id="@+id/day1TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:textSize="35sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/day1IV"
+            app:layout_constraintStart_toEndOf="@+id/day1IV"
+            app:layout_constraintTop_toTopOf="@+id/day1IV"
+            android:text="@string/monday" />
+
+
+        <ImageView
+            android:id="@+id/day1IV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/partly_cloudy"
+            app:layout_constraintStart_toStartOf="@+id/day1TempTV"
+            app:layout_constraintTop_toTopOf="@+id/futureForecastGuideline" />
+
+
+        <TextView
+            android:id="@+id/day1TempTV"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/day2TempTV"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/day1IV"
+            android:text="@string/degree" />
+
+
+        <TextView
+            android:id="@+id/day2TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:textSize="35sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/day2IV"
+            app:layout_constraintStart_toEndOf="@+id/day2IV"
+            app:layout_constraintTop_toTopOf="@+id/day2IV"
+            android:text="@string/tuesday" />
+
+
+        <ImageView
+            android:id="@+id/day2IV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/partly_cloudy"
+            app:layout_constraintStart_toStartOf="@+id/day2TempTV"
+            app:layout_constraintTop_toTopOf="@+id/futureForecastGuideline" />
+
+
+        <TextView
+            android:id="@+id/day2TempTV"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/day3TempTV"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/day1TempTV"
+            app:layout_constraintTop_toBottomOf="@+id/day2IV"
+            android:text="@string/degree" />
+
+
+        <TextView
+            android:id="@+id/day3TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:textSize="35sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/day3IV"
+            app:layout_constraintStart_toEndOf="@+id/day3IV"
+            app:layout_constraintTop_toTopOf="@+id/day3IV"
+            android:text="@string/wednesday" />
+
+
+        <ImageView
+            android:id="@+id/day3IV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/partly_cloudy"
+            app:layout_constraintStart_toStartOf="@+id/day3TempTV"
+            app:layout_constraintTop_toTopOf="@+id/futureForecastGuideline" />
+
+
+        <TextView
+            android:id="@+id/day3TempTV"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/day4TempTV"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/day2TempTV"
+            app:layout_constraintTop_toBottomOf="@+id/day3IV"
+            android:text="@string/degree" />
+
+
+        <TextView
+            android:id="@+id/day4TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:textSize="35sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/day4IV"
+            app:layout_constraintStart_toEndOf="@+id/day4IV"
+            app:layout_constraintTop_toTopOf="@+id/day4IV"
+            android:text="@string/thursday" />
+
+
+        <ImageView
+            android:id="@+id/day4IV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/partly_cloudy"
+            app:layout_constraintStart_toStartOf="@+id/day4TempTV"
+            app:layout_constraintTop_toTopOf="@+id/futureForecastGuideline" />
+
+
+        <TextView
+            android:id="@+id/day4TempTV"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:textColor="@color/colorTextAndIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/day3TempTV"
+            app:layout_constraintTop_toBottomOf="@+id/day4IV"
+            android:text="@string/degree" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/cityNameGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/tempGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/conditionGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.36" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/firstRowDetailsGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.51" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/secondRowDetailsGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.58" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/futureForecastGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.68" />
+
+        <android.support.constraint.Group
+            android:id="@+id/weatherGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="currentCityTV, currentCountryTV, currentTempTV,
+            currentConditionIV, currentConditionTV, day1TV, day1TempTV, day1IV, day2TV,
+            day2IV, day2TempTV, day3TV, day3IV, day3TempTV, day4TV, day4IV, day4TempTV"
+            />
+
+        <android.support.constraint.Group
+            android:id="@+id/inputGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="searchButtonLayout, searchInput, locationButtonLayout" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SCG Weather</string>
+    <string name="city">Current City</string>
+    <string name="country">Current Country</string>
+    <string name="date">Day,MM,DD, 00:00:PM</string>
+    <string name="degree">80°F</string>
+    <string name="partly_cloudy">Partly Cloudy</string>
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="sunday">SUN</string>
+    <string name="humidity">Humidity: %1$s</string>
+    <string name="pressure">Pressure: %1$s mb</string>
+    <string name="wind">Wind: %1$s %2$s m/h</string>
+    <string name="visibility">Visibility: %1$s m</string>
+    <string name="noAPI">You do not have an api string setup</string>
+    <string name="noInternet">You are not connected to the internet</string>
+    <string name="searchCity">City Name or Zip Code</string>
+    <string name="temp_degree">%1$s°F</string>m
+</resources>
